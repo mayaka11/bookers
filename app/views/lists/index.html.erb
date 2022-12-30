@@ -1,0 +1,23 @@
+<h1>Lists#index  投稿一覧</h1>
+
+<% @lists.each do |list| %>
+
+  <P>タイトル</P>
+  <span>
+    <%= link_to list.title, list_path(list.id) %>
+  </span>
+<% end %>
+
+
+
+<h1>Lists#new  新規投稿</h1>
+<!-- form_with部分 -->
+<%= form_with model: @list,url: '/books',method: :post do |f| %>
+  <h4>title</h4>
+  <%= f.text_field :title %>
+
+  <h4>body</h4>
+  <%= f.text_area :body %>
+
+  <%= f.submit '投稿' %>
+<% end %>
