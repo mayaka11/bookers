@@ -1,30 +1,51 @@
 <!DOCTYPE html>
-<html></html>
+<html>
 <body>
     <p id="notice"></p>
     <h1>Lists#index  投稿一覧 Books</h1>
+
     <table>
-      <thead>
+      <thfad>
         <tr>
-          <th>Title</th>
-          <th>Body</th>
-          <th colspan="3"></th>
+         <th>title</th>
+         <th>body</th>
+         <th colspan="3"></th>
         </tr>
-      </thead>
+      </thfad>
 
-     <tbody>
+      <tbody>
        <% @lists.each do |list| %>
-      <tr>
-        <p><%= link_to list.title, list_path(list.id) %></p>
-        <p><%= @list.body %></p>
-      </tr>
-      </tbody>
-    </table>
+       <tr>
+         <td>
+           <%= link_to list.title, list_path(list.id) %>
+         </td>
+         <td>
+          <%= link_to list.body,list_path(list.id) %>
+         </td>
+         <td>
+           <%= link_to "show",list_path(list.id) %>
+           <%= link_to "edit",edit_list_path(list.id) %>
+           <%= link_to "destroy",destroy_list_path(list.id),method: :delete, "data-confirm" => "本当に削除しますか？" %>
+         </td>
+       </tr>
+     </table>
+    </tbody>
+    <% end %>
 
-      <% end %>
+
+ <% if @list.errors.any? %>
+  <%= @list.errors.count %>件のエラーが発生しました
+  <ul>
+    <% @list.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
 
 
-    <h2>Lists#new  新規投稿 New book</h2>
+
+
+  <h2>Lists#new  新規投稿 New book</h2>
 <!-- form_with部分 -->
 <%= form_with model: @list,url: '/books',method: :post do |f| %>
   <h4>title</h4>
@@ -33,13 +54,13 @@
   <h4>body</h4>
   <%= f.text_area :body %>
 
-  <%= f.submit '投稿' %>
+  <%= f.submit 'Create Book' %>
 <% end %>
 
 </body>
 
 
-
+</html>
 
 
 

@@ -14,11 +14,17 @@
  *= require_self
  */
 
-
-
 ＊ {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+
+th {
+  padding-right: 150px;
+}
+
+td {
+  justify-content: center;
+}

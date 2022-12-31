@@ -8,8 +8,9 @@ class ListsController < ApplicationController
     @list = Book.new(book_params)
     if @list.save
       redirect_to list_path(@list.id)
+      flash[:notice] = "投稿に成功しました"
     else
-      render :new
+      render :books
     end
   end
 
@@ -26,12 +27,17 @@ class ListsController < ApplicationController
 
   def edit
     @list = Book.find(params[:id])
+    flash[:update] = "更新に成功しました"
   end
 
+
   def update
-    list = Book.find(params[:id])
-    list.update(book_params)
-    redirect_to list_path(list.id)
+    @list = Book.find(params[:id])
+    if @list.update
+      redirect_to list_path(@list.id)
+    else
+      render :edit
+    end
   end
 
 
@@ -40,6 +46,7 @@ class ListsController < ApplicationController
     list.destroy
     redirect_to '/books'
   end
+
 
 
 
