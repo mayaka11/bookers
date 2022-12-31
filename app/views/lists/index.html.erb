@@ -1,16 +1,30 @@
-<h1>Lists#index  投稿一覧</h1>
+<!DOCTYPE html>
+<html></html>
+<body>
+    <p id="notice"></p>
+    <h1>Lists#index  投稿一覧 Books</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Body</th>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
 
-<% @lists.each do |list| %>
+     <tbody>
+       <% @lists.each do |list| %>
+      <tr>
+        <p><%= link_to list.title, list_path(list.id) %></p>
+        <p><%= @list.body %></p>
+      </tr>
+      </tbody>
+    </table>
 
-  <P>タイトル</P>
-  <span>
-    <%= link_to list.title, list_path(list.id) %>
-  </span>
-<% end %>
+      <% end %>
 
 
-
-<h1>Lists#new  新規投稿</h1>
+    <h2>Lists#new  新規投稿 New book</h2>
 <!-- form_with部分 -->
 <%= form_with model: @list,url: '/books',method: :post do |f| %>
   <h4>title</h4>
@@ -21,3 +35,17 @@
 
   <%= f.submit '投稿' %>
 <% end %>
+
+</body>
+
+
+
+
+
+
+
+
+
+
+
+

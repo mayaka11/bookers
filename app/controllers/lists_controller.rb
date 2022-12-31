@@ -1,5 +1,7 @@
 class ListsController < ApplicationController
-
+  def new
+   @list = Book.new
+  end
 
 
   def create
@@ -14,10 +16,12 @@ class ListsController < ApplicationController
   def index
     @list = Book.new
     @lists = Book.all
+
   end
 
   def show
     @list = Book.find(params[:id])
+
   end
 
   def edit
