@@ -14,7 +14,7 @@
 <body>
  <p id="notice"></p>
 <main>
-  <p>Lists#show title:<%= @list.title %></p>
+  <p>title:<%= @list.title %></p>
 </main>
 
 
@@ -24,7 +24,7 @@
 
 
 <%= link_to "edit",edit_list_path(@list.id) %>
-<%= link_to "delete",destroy_list_path(@list.id),method: :delete, "data-confirm" => "本当に削除しますか？" %>
+
 <%= link_to "Back","/books" %>
 
 

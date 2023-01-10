@@ -10,7 +10,9 @@ class ListsController < ApplicationController
       redirect_to list_path(@list.id)
       flash[:notice] = "投稿に成功しました"
     else
-      render :books
+      @lists = Book.all
+      render :index
+
     end
   end
 
@@ -45,6 +47,7 @@ class ListsController < ApplicationController
     list = Book.find(params[:id])
     list.destroy
     redirect_to '/books'
+    flash[:destroy] = "削除が成功しました"
   end
 
 

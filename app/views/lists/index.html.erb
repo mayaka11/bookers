@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html>
-<body>
+  <div>
+    <%= flash[:notice] %>
+  </div>
+  
+  <body>
     <p id="notice"></p>
     <h1>Books</h1>
 
@@ -28,22 +32,24 @@
            <%= link_to "destroy",destroy_list_path(list.id),method: :delete, "data-confirm" => "本当に削除しますか？" %>
          </td>
        </tr>
-     </table>
+      </tbody>
     </tbody>
+
     <% end %>
 
 
- <% if @list.errors.any? %>
-  <%= @list.errors.count %>件のエラーが発生しました
-  <ul>
-    <% @list.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
+   <% if @list.errors.any? %>
+    <%= @list.errors.count %>件のエラーが発生しました
+    <ul>
+      <% @list.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
     <% end %>
-  </ul>
-<% end %>
 
+  </body>
 
-
+  <main>
 
   <h2>New book</h2>
 <!-- form_with部分 -->
@@ -57,8 +63,7 @@
   <%= f.submit 'Create Book' %>
 <% end %>
 
-</body>
-
+  </main>
 
 </html>
 
