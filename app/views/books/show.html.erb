@@ -14,16 +14,16 @@
 <body>
  <p id="notice"></p>
 <main>
-  <p>title:<%= @list.title %></p>
+  <p>title:<%= @book.title %></p>
 </main>
 
 
 <main>
-  <p>body:<%= @list.body %><p>
+  <p>body:<%= @book.body %><p>
 </main>
 
 
-<%= link_to "edit",edit_list_path(@list.id) %>
+<%= link_to "edit",edit_book_path(@book.id) %>
 
 <%= link_to "Back","/books" %>
 
