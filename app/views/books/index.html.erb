@@ -12,8 +12,8 @@
     <table>
       <thfad>
         <tr>
-         <th>title</th>
-         <th>body</th>
+         <th>Title</th>
+         <th>Body</th>
          <th colspan="3"></th>
         </tr>
       </thfad>
@@ -22,25 +22,23 @@
        <% @books.each do |book| %>
        <tr>
          <td>
-           <%= link_to book.title, book_path(book.id) %>
+           <%= book.title %>
          </td>
          <td>
-          <%= link_to book.body,book_path(book.id) %>
+          <%= book.body %>
          </td>
          <td>
-           <%= link_to "show",book_path(book.id) %>
-           <%= link_to "edit",edit_book_path(book.id) %>
-           <%= link_to "destroy", destroy_book_path(book.id) , method: :delete, "data-confirm" => "本当に削除しますか？" %>
+           <%= link_to "Show",book_path(book.id) %>
+           <%= link_to "Edit",edit_book_path(book.id) %>
+           <%= link_to "Destroy", destroy_book_path(book.id) , method: :delete, "data-confirm" => "Do you really want to delete this?" %>
          </td>
        </tr>
       </tbody>
-    </tbody>
-
     <% end %>
 
 
-   <% if @book.errors.any? %>
-    <%= @book.errors.count %>件のエラーが発生しました
+      <% if @book.errors.any? %>
+      <%= @book.errors.count %>errors
     <ul>
       <% @book.errors.full_messages.each do |message| %>
         <li><%= message %></li>
@@ -52,20 +50,20 @@
 
   <main>
 
-  <h2>New book</h2>
-<!-- form_with部分 -->
-<%= form_with model: @book, url: '/books',method: :post do |f| %>
-  <h4>title</h4>
-  <%= f.text_field :title %>
+    <h2>New book</h2>
+      <!-- form_with部分 -->
+      <%= form_with model: @book, url: '/books',method: :post do |f| %>
+    <h4>title</h4>
+      <%= f.text_field :title %>
 
-  <h4>body</h4>
-  <%= f.text_area :body %>
+    <h4>body</h4>
+      <%= f.text_area :body %>
 
-  <%= f.submit 'Create Book' %>
-<% end %>
+      <%= f.submit 'Create Book' %>
+    <% end %>
 
   </main>
-
+  </table>
 </html>
 
 
